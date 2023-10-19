@@ -1,33 +1,60 @@
 // the 'DOMContentLoaded' events fires when all the 
 // HTML elements in the webpage has been created
 // We use it to define the entry point of our application
-
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded",function(){
     function main(){
-        let todos =[];
-        addTodo(todos, "Walk the dog", 5); 
-        addTodo(todos, "Fish the fish", 1); 
-        addTodo(todos, "Clean the floor", 2); 
-        addTodo(todos, "Wash the car", 3); 
-        
-        for (let task of todos){
+        let todos = [];
+        addTodo(todos, "Walk the dog", 5);
+        addTodo(todos, "Mop the floor", 3);
+        addTodo(todos, "Clean the toilet", 1);
+        addTodo(todos, "Wash the car", 2);
+        renderTodos(todos); 
+
+        // attach all the event listeners here
+        document.querySelector("#addTodo").addEventListener("click", function(){
+            const taskNameElement = document.querySelector("#taskName");
+            const taskName = taskNameElement.value;
+            const taskUrgencyElement = document.querySelector("#taskUrgency"); 
+            const taskUrgency = taskUrgencyElement.value;
+
+            addTodo(todos, taskName, taskUrgency); 
+            renderTodos(todos); // to redraw the list of tasks
+        })
+    }
+
+    function renderTodos(todos){
+        const todoListElement = document.querySelector("#todoList");
+        todoListElement.innerHTML =""; // reset the content 
+        for (let task of todos) {
             // create an empty <li>
-            const li = document.createElement('li'); 
+            const listItem = document.createElement('li'); 
+            
+            // set the class of the newly created element
+            listItem.className = "list-group-item"; 
 
-            li.innerHTML = `${t.name} (urgency: ${t.urgency})`
+            // set its innerHTML (the content that we want to display within the li)
+            listItem.innerHTML = `${task.name} (urgency: ${task.urgency}) 
+            <button classs= "btn btn-primary btn-sm edit-btn">Edit</button>
+            <button classs= "btn btn-danger btn-sm delete-btn">Delete</button>
+            `
 
-            const todoListElement = document.querySelector("#todoList");
-            todoListElement.appendChild(li); 
+            // in this specific <li> element, look for a button with the class `edit-btn`
+            listItem.querySelector(".edit-btn").addEventListener("click", function(){
+                // the annoymous function that is being created remember what `t` was referring
+                // at the point that is being created
+                
+                // ask the user for the new task name and the new urgency
+                alert("click"); 
+            });            
+                
+
+
+            todoListElement.appendChild(listItem);
         }
     }
 
+    main(); 
 })
-
-function renderTodos(todos){
-
-}
-
-main(); 
 
 
 // const prompt = require('prompt-sync')();

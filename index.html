@@ -13,22 +13,32 @@
   <body>
     <!-- When adding the new feature always add its in HTML first -->
     <!-- Then add the event listener -->
-    <!-- Then the  -->
+    <!-- Then the .... -->
+    <!-- Then the .... -->
     
     <div class="container">
-        <h1>Todos App</h1>
-        <div>
-            <div>
-                <label>Task Name:</label>
+        <h1>Todo App</h1>
 
-        <ul id="todoList" class="list-group"></ul>
+        <form id ="todoForm">
+          <div>
+              <label>Task Name:</label>
+              <input type = "text" id = "taskName" class = "form-control"
+          </div> 
+          <div> 
+              <label>Urgency:</label>
+              <input type = "text" id = "taskUrgency" class = "form-control"
+          </div>
+          <button id="addTodo" class="btn btn-primary mt-3">Add To Do</button>
+        
+        </form>
 
-
-
-
+        <ul id="todoList" class="list-group mt-3"></ul>
+        
     </div>
+    <!-- The order is important -->
     <script src="data.js"></script>
     <!-- all the functions defined in data.js will be available in script.js -->
+    <!-- if I want to use functions in from data.js I mus place it first -->
     <script src="script.js"></script>
   </body>
 </html>

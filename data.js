@@ -54,16 +54,16 @@ function deleteTask(todos, id) {
   }
 }
 
-// for testing 
-addTodo(todos, "Wash the car", 5); 
-addTodo(todos, "Sweep the floor", 3); 
-addTodo(todos, "Clear the toilet", 5); 
-console.log(todos)
+// // for testing 
+// addTodo(todos, "Wash the car", 5); 
+// addTodo(todos, "Sweep the floor", 3); 
+// addTodo(todos, "Clear the toilet", 5); 
+// console.log(todos)
 
-// for testing
-modifyTask(todos, todos[0].id, "Wash the fruits",4); 
-console.log(todos); 
+// // for testing
+// modifyTask(todos, todos[0].id, "Wash the fruits",4); 
+// console.log(todos); 
 
-// for testing
-deleteTask(todos, todos[1].id); 
-console.log(todos); 
+// // for testing
+// deleteTask(todos, todos[1].id); 
+// console.log(todos); 
