@@ -46,10 +46,9 @@ document.addEventListener("DOMContentLoaded",function(){
                 // ask the user for the new task name and the new urgency
                 alert("click"); 
             });            
-                
-
-
+            
             todoListElement.appendChild(listItem);
+ 
         }
     }
 
