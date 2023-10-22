@@ -4,14 +4,15 @@
 document.addEventListener("DOMContentLoaded",function(){
     function main(){
         let todos = [];
-        addTodo(todos, "Walk the dog", 5);
-        addTodo(todos, "Mop the floor", 3);
-        addTodo(todos, "Clean the toilet", 1);
-        addTodo(todos, "Wash the car", 2);
+        // addTodo(todos, "Walk the dog", 5);
+        // addTodo(todos, "Mop the floor", 3);
+        // addTodo(todos, "Clean the toilet", 1);
+        // addTodo(todos, "Wash the car", 2);
         renderTodos(todos); 
 
         // attach all the event listeners here
-        document.querySelector("#addTodo").addEventListener("click", function(){
+        document.querySelector("#submit-todo").addEventListener("click", function(event){
+            event.preventDefault(); // this is specificly if we are using the 'form' in HTML
             const taskNameElement = document.querySelector("#taskName");
             const taskName = taskNameElement.value;
             const taskUrgencyElement = document.querySelector("#taskUrgency"); 
@@ -34,19 +35,28 @@ document.addEventListener("DOMContentLoaded",function(){
 
             // set its innerHTML (the content that we want to display within the li)
             listItem.innerHTML = `${task.name} (urgency: ${task.urgency}) 
-            <button classs= "btn btn-primary btn-sm edit-btn">Edit</button>
-            <button classs= "btn btn-danger btn-sm delete-btn">Delete</button>
+            <button class= "btn btn-primary btn-sm edit-btn">Edit</button>
+            <button class= "btn btn-danger btn-sm delete-btn">Delete</button>
             `
 
             // in this specific <li> element, look for a button with the class `edit-btn`
             listItem.querySelector(".edit-btn").addEventListener("click", function(){
                 // the annoymous function that is being created remember what `t` was referring
                 // at the point that is being created
-                
+
                 // ask the user for the new task name and the new urgency
-                alert("click"); 
+                const newTaskName = prompt("Please enter the new task name: ", task.name);
+                const newTaskUrgency = parseInt(prompt("Please enter the new task Urgency: ", task.urgency)); 
+                modifyTask(todos, task.id, newTaskName, newTaskUrgency);
+                renderTodos(todos); 
             });            
             
+            // select the delete button that is in the li element 
+            listItem.querySelector(".delete-btn").addEventListener("click", function(){
+                deleteTask(todos, task.id);
+                renderTodos(todos); 
+            })
+
             todoListElement.appendChild(listItem);
  
         }
@@ -54,56 +64,4 @@ document.addEventListener("DOMContentLoaded",function(){
 
     main(); 
 })
-
-
-// const prompt = require('prompt-sync')();
-
-// function showMenu(){
-//   while (true){
-//     console.log("===== Todo List Menu ====");
-//     console.log("1. Show all tasks"); 
-//     console.log("2. Add a new Task");
-//     console.log("3. Modify an existing task");
-//     console.log("4. Delete a task"); 
-//     console.log("5. Exit");
-//     let choice = prompt("Enter your choice here: ")
-//     if (choice === "1"){
-//       displayTask(todos); 
-//     } else if (choice === "2"){
-//       let name = string(prompt("Enter the name of the task: "))
-//       let urgency = parseInt(prompt("Enter the urgency (1-5): ")); 
-//       addTodo(todos, name, urgency); 
-//       console.log("Task added successfully!");       
-//     } else if (choice === "3"){
-//       let id = parseInt(prompt("Enter the task ID to modify: ")); 
-//       let newTaskName = prompt("Enter the new name for the task: "); 
-//       let newUrgency = parseInt(prompt("Enter the new urgency (1-5): "));
-//       modifyTask(todos, id, newTaskName, newUrgency); 
-//       console.log("Task modified successfully!"); 
-//     } else if (choice === "4"){
-//       let id = parseInt(prompt("Enter the task ID to delete: "));
-//       deleteTask(todos, id); 
-//       console.log("Task deleted successfully!"); 
-//     } else if (chocie === "5"){
-//       console.log("Exiting the application..."); 
-//       break;
-//     } else {
-//       console.log("Invalid choice. Please select a number between 1 and 5."); 
-//     }
-//   }
-// }
-
-// function displayTasks(todos){
-//   if (todos.length === 0){
-//     console.log("There are no tasks to display.");
-//     return; 
-//   }
-//   console.log("==== Tasks ====");
-//   for (let task of todos){
-//     console.log(`ID: ${task.id}, Name: ${task.name}, Urgency: ${task.urgency}`); 
-//   }
-// }
-
-// showMenu();
-
 

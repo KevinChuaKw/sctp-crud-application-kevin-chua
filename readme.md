@@ -9,3 +9,12 @@ Open the terminal
 Type python3 -m http.server
 If the port is already in use just type in a random number after the http.server (eg: python3 -m http.server 8081)
 Close the server - click in the terminal (make sure it has focus) and press CTRL + C
+
+Json Bin 
+it is a restfull API - cloud storge so we can store data online 
+jsonbin.com 
+
+Easier to work with public bins compared to private bins 
+
+Json Bin 
+65334e4f54105e766fc50d13 

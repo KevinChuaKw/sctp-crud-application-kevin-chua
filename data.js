@@ -1,3 +1,26 @@
+// const BASE_JSON_BIN_URL = "";  
+// const BASE_ID = "65334e4f54105e766fc50d13"; 
+// // Negative example of bad cybersecurity practice 
+// const MASTER_KEY= "$2a$10$vKaQ2RYgubN66GfzgbamiuXIAMjcQbt1xkR/rxbWwFZZ1ztWPjILO"; 
+
+
+// // load all the tasks from the bin
+// async function loadTask(){
+//   // according to JSONBIN documentation, reading from a bin uses 
+//   // the GET request type so we use `axios.get`
+//   const response = await axios.get(`${BASE_JSON_BIN_URL}/b/${BIN_ID}`);
+//   console.log(response.data); 
+//   return response.data.record 
+// }
+
+// async function saveTasks(todos){
+//   // axios.put got at least 3 arguments
+//   // First argument: the URL of the endpoint 
+//   // Second argument what to send to the endpoint 
+//   // Third arguement (optional): headers
+
+// }
+
 let todos = [];
 
 // function to add a new task
@@ -24,7 +47,7 @@ function modifyTask(todos, id, newName, newUrgency) {
   let modifiedTask = {
     "id": id,
     "name": newName,
-    "Urgency": newUrgency
+    "urgency": newUrgency
   }
   // get the index of the task that we want to replace 
   const indexToReplace = todos.findIndex(function(t){
