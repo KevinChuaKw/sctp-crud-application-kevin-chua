@@ -6,25 +6,29 @@ const BASE_JSON_BIN_URL = "https://api.jsonbin.io/v3";
 const BIN_ID = "65334e4f54105e766fc50d13"; 
 
 // Negative example of bad cybersecurity practice 
-// const MASTER_KEY= "$2a$10$vKaQ2RYgubN66GfzgbamiuXIAMjcQbt1xkR/rxbWwFZZ1ztWPjILO"; 
+const MASTER_KEY= "$2a$10$z0jpvCxcLpn7tYV.LEbHO.P4Bm/nEhNzbphi62jERlmC9XWC.0Vf2"; 
 
 
 // load all the tasks from the bin
 async function loadTask(){
   // according to JSONBIN documentation, reading from a bin uses 
   // the GET request type so we use `axios.get`
-  const response = await axios.get(`${BASE_JSON_BIN_URL}/b/${BIN_ID}`);
+  const response = await axios.get(`${BASE_JSON_BIN_URL}/b/${BIN_ID}/latest`);
   console.log(response.data); 
   return response.data.record 
+} 
+
+async function saveTasks(todos){
+  // axios.put got at least 3 arguments
+  // First argument: the URL of the endpoint 
+  // Second argument what to send to the endpoint 
+  // Third arguement (optional): headers or meta-data and we have to include our master key
+  const response = await axios.put(`${BASE_JSON_BIN_URL}/b/${BIN_ID}`, todos,{
+    "content-type":"application/json",
+    "X-Master-Key": MASTER_KEY
+    });
+    console.log(response.data);
 }
-
-// async function saveTasks(todos){
-//   // axios.put got at least 3 arguments
-//   // First argument: the URL of the endpoint 
-//   // Second argument what to send to the endpoint 
-//   // Third arguement (optional): headers
-
-// }
 
 let todos = [];
 

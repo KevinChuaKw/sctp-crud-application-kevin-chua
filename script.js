@@ -22,6 +22,12 @@ document.addEventListener("DOMContentLoaded",function(){
             addTodo(todos, taskName, taskUrgency); 
             renderTodos(todos); // to redraw the list of tasks
         })
+
+        document.querySelector("#save-btn").addEventListener("click", async function(){
+            await saveTasks(todos); 
+            alert("Tasks have been saved");
+        })
+
     }
 
     function renderTodos(todos){
