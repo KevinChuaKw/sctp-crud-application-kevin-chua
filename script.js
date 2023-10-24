@@ -2,8 +2,9 @@
 // HTML elements in the webpage has been created
 // We use it to define the entry point of our application
 document.addEventListener("DOMContentLoaded",function(){
-    function main(){
-        let todos = [];
+    async function main(){
+
+        let todos = await loadTask();
         // addTodo(todos, "Walk the dog", 5);
         // addTodo(todos, "Mop the floor", 3);
         // addTodo(todos, "Clean the toilet", 1);

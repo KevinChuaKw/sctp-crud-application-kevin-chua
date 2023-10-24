@@ -1,17 +1,22 @@
-// const BASE_JSON_BIN_URL = "";  
-// const BASE_ID = "65334e4f54105e766fc50d13"; 
-// // Negative example of bad cybersecurity practice 
+// data.js is the DATA LAYER
+// all the functions to do for updating/modifying/getting data
+// is here
+
+const BASE_JSON_BIN_URL = "https://api.jsonbin.io/v3";  
+const BIN_ID = "65334e4f54105e766fc50d13"; 
+
+// Negative example of bad cybersecurity practice 
 // const MASTER_KEY= "$2a$10$vKaQ2RYgubN66GfzgbamiuXIAMjcQbt1xkR/rxbWwFZZ1ztWPjILO"; 
 
 
-// // load all the tasks from the bin
-// async function loadTask(){
-//   // according to JSONBIN documentation, reading from a bin uses 
-//   // the GET request type so we use `axios.get`
-//   const response = await axios.get(`${BASE_JSON_BIN_URL}/b/${BIN_ID}`);
-//   console.log(response.data); 
-//   return response.data.record 
-// }
+// load all the tasks from the bin
+async function loadTask(){
+  // according to JSONBIN documentation, reading from a bin uses 
+  // the GET request type so we use `axios.get`
+  const response = await axios.get(`${BASE_JSON_BIN_URL}/b/${BIN_ID}`);
+  console.log(response.data); 
+  return response.data.record 
+}
 
 // async function saveTasks(todos){
 //   // axios.put got at least 3 arguments
